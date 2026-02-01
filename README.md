@@ -2,6 +2,8 @@
 
 Custom Proxmox VE helper scripts that install **n8n** with **Playwright + Chromium** pre-configured for browser automation inside an LXC container.
 
+**Single-command deployment** - ready to use!
+
 ## Files
 
 | File | Purpose |
@@ -21,26 +23,19 @@ Custom Proxmox VE helper scripts that install **n8n** with **Playwright + Chromi
 
 ## Usage
 
-### Option A: Self-Host the Scripts
+### Installation
 
-1. Fork or clone the [community-scripts/ProxmoxVE](https://github.com/community-scripts/ProxmoxVE) repo.
-2. Copy `ct/n8n-playwright.sh` and `install/n8n-playwright-install.sh` into the appropriate directories.
-3. Update the `source` URL in `ct/n8n-playwright.sh` to point to your fork.
-4. Run from the Proxmox shell:
+Run this **single command** from your Proxmox VE shell:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/YOUR_USER/ProxmoxVE/main/ct/n8n-playwright.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/jusleg/lxc-n8n-playwright/main/ct/n8n-playwright.sh)"
 ```
 
-### Option B: Run Locally
-
-1. Download both scripts to your Proxmox host.
-2. The `ct/` script still sources `build.func` from the community repo, so it needs internet access.
-3. Run:
-
-```bash
-bash ct/n8n-playwright.sh
-```
+The script will:
+- Create a Debian 12 LXC container with 4GB RAM and 12GB disk
+- Install Node.js 22, n8n, Playwright, and Chromium
+- Configure the systemd service with browser automation support
+- Display the access URL when complete (typically `http://<container-ip>:5678`)
 
 ### Updating
 

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# Override the repository URL that build.func uses
+export GIT_RAW="${GIT_RAW:-https://raw.githubusercontent.com/jusleg/lxc-n8n-playwright/main}"
+
 source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: community-scripts (tteckster) - Modified for Playwright support
